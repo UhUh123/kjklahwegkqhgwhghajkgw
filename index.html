@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Генератор заданий по программированию</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23216869'/%3E%3Cpath d='M10 11l-4 5 4 5M22 11l4 5-4 5M18 8l-4 16' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-labelledby="app-title">
+        <header class="topbar">
+          <div>
+            <h1 id="app-title">Генератор оценочных заданий</h1>
+          </div>
+          <div class="actions">
+            <button class="primary-action" type="button" id="generateAiButton">
+              Сгенерировать задание
+            </button>
+          </div>
+        </header>
+
+        <div class="layout">
+          <aside class="settings-panel" aria-label="Параметры задания">
+            <div class="field-group">
+              <label for="languageSelect">Язык программирования</label>
+              <select id="languageSelect">
+                <option value="python">Python</option>
+                <option value="cpp">C++</option>
+                <option value="java">Java</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="taskTypeSelect">Тип задания</label>
+              <select id="taskTypeSelect">
+                <option value="gaps">Код с пропусками</option>
+                <option value="bugs">Зашумленный код</option>
+                <option value="reorder">Восстановить порядок строк</option>
+                <option value="explain">Объяснение кода</option>
+                <option value="output">Определить результат выполнения</option>
+                <option value="complete">Дополнить функцию</option>
+                <option value="extra">Найти лишний фрагмент</option>
+                <option value="match">Сопоставить код и описание</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="levelSelect">Сложность</label>
+              <select id="levelSelect">
+                <option value="easy">Легкая</option>
+                <option value="medium">Средняя</option>
+                <option value="hard">Сложная</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="topicInput">Тема</label>
+              <input
+                id="topicInput"
+                type="text"
+                value="Циклы"
+                placeholder="Например: массивы, функции, классы"
+              />
+            </div>
+
+            <div class="field-group">
+              <label for="countInput">Количество элементов задания</label>
+              <input id="countInput" type="number" min="1" max="12" value="3" />
+            </div>
+
+          </aside>
+
+          <section class="editor-panel" aria-label="Исходный код">
+            <div class="section-heading">
+              <h2>Правильный исходный код</h2>
+              <span id="languageBadge">Python</span>
+            </div>
+            <textarea
+              id="sourceCode"
+              spellcheck="false"
+              placeholder="Вставьте сюда рабочий исходный код, из которого нужно сделать задание для студентов"
+            ></textarea>
+          </section>
+
+          <section class="result-panel" aria-label="Результат генерации">
+            <div class="section-heading">
+              <h2>Оценочный материал</h2>
+              <span id="generationStatus">Ожидание</span>
+            </div>
+            <article class="result-preview" id="resultPreview"></article>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
